@@ -1,6 +1,12 @@
-﻿  Functions.cpp
-C:\Users\Семён\Desktop\exam work\To-Do-List\TODOList\TODOlist\Functions.cpp(19,10): warning C4129: i: неизвестная escape-последовательность
-  TODOlist.cpp
+﻿F:\vs\visual studio\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (TODOlist.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  Functions.cpp
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(18,10): warning C4129: i: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(77,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(77,125): warning C4129: j: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(97,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(97,125): warning C4129: j: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(117,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(117,125): warning C4129: j: неизвестная escape-последовательность
+  master.cpp
   Создание кода...
-  LINK : не найден или не выполнена сборка C:\Users\Семён\Desktop\exam work\To-Do-List\TODOList\x64\Debug\TODOlist.exe при последней инкрементной компоновке; выполняется полная компоновка
-  TODOlist.vcxproj -> C:\Users\Семён\Desktop\exam work\To-Do-List\TODOList\x64\Debug\TODOlist.exe
+  TODOlist.vcxproj -> C:\Users\semas\Documents\calorie-counter\TODOList\x64\Debug\calorie-counter.exe

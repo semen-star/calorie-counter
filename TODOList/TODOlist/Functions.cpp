@@ -6,12 +6,12 @@
 using namespace std;
 
 void show_menu() {
-	std::cout << "[1] ADD A NOTE" << endl;
-	std::cout << "[2] SHOW ALL NOTES" << endl;
-	std::cout << "[3] FIND A NOTE" << endl;
-	std::cout << "[4] DELETE THE NOTE" << endl;
-	std::cout << "[5] DELETE ALL NOTES" << endl;
-	std::cout << "[6] Exit" << endl;
+	cout << "[1] ADD A NOTE" << endl;
+	cout << "[2] SHOW ALL NOTES" << endl;
+	cout << "[3] FIND A NOTE" << endl;
+	cout << "[4] DELETE THE NOTE" << endl;
+	cout << "[5] DELETE ALL NOTES" << endl;
+	cout << "[6] Exit" << endl;
 }//вывод меню
 void see_do() {
 	ifstream file_date("date.txt");
