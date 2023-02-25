@@ -5,13 +5,51 @@
 #include "Functions.h"
 using namespace std;
 
+void registration() {
+	ofstream file("users.txt", ios::app);
+	if (!file.is_open()) {
+		cout << "Error in working with the file system!";
+		exit(EXIT_FAILURE);
+	}
+	
+
+	file.close();
+}//TODO сделать вход пользователей
+void add_user() {
+
+
+}//TODO сделать добавление пользователя
+
 void show_menu() {
-	cout << "[1] ADD A NOTE" << endl;
-	cout << "[2] SHOW ALL NOTES" << endl;
-	cout << "[3] FIND A NOTE" << endl;
-	cout << "[4] DELETE THE NOTE" << endl;
-	cout << "[5] DELETE ALL NOTES" << endl;
-	cout << "[6] Exit" << endl;
+	ifstream file("users.txt");
+	if (!file.is_open()) {
+		cout << "Error in working with the file system!";
+		return;
+	}
+	string name, sex;
+	float height, weight;
+	cout << "\t\tAll cases:" << endl;
+	height = 0;
+	for (int i = 1; !file.eof(); i++)
+	{
+		getline(file, name);
+		getline(file, height);
+		getline(file, weight);
+		getline(file, sex);
+		if (name.empty())
+			continue;
+		cout << '[' << i << ']' << endl << "\tНик: " << name << endl << "\tРост: " << height << endl << "\tВес: " << weight << endl << "\tПол: " << sex << endl << "\tИМТ: " << weight/(pow((height/100),2)) << endl;
+	}
+
+	
+	cout << endl << endl;
+	
+	
+	cout << "[1] edit personal data" << endl;
+	cout << "[2] add products" << endl;
+	cout << "[3] summary for the day" << endl;
+	cout << "[4] Exit" << endl;
+	file.close();
 }//вывод меню
 void see_do() {
 	ifstream file_date("date.txt");
@@ -184,12 +222,12 @@ void add_note() {
 		
 		string note_name;
 		getline(cin, note_name);
-		std::cout << "Enter the name of the case:";
+		cout << "Enter the name of the case:";
 		getline(cin, note_name);
 		file << note_name << endl;
 	}//name note
 	{
-		std::cout << endl;
+		cout << endl;
 		importance();
 		int x = 0;
 		cin >> x;
@@ -211,7 +249,7 @@ void add_note() {
 		string description;
 		
 		getline(cin, description);
-		std::cout << "Enter a description of the case:";
+		cout << "Enter a description of the case:";
 		getline(cin, description);
 		file << description << endl;
 	}//note description
@@ -275,7 +313,7 @@ void add_note() {
 			file<<day<< "."<<mounth<<"." << year << endl;
 		}//date
 		file.close();
-	std::cout << endl << "Ваше дело добавлена успешно!" << endl;
+	cout << endl << "Ваше дело добавлена успешно!" << endl;
 	//добавление заметок
 }
 
@@ -388,12 +426,12 @@ void add_note_for_redact() {
 
 		string note_name;
 		getline(cin, note_name);
-		std::cout << "Введите новое название дела:";
+		cout << "Введите новое название дела:";
 		getline(cin, note_name);
 		file << note_name << endl;
 	}//name note
 	{
-		std::cout << endl;
+		cout << endl;
 		importance();
 		int x = 0;
 		cin >> x;
@@ -415,7 +453,7 @@ void add_note_for_redact() {
 		string description;
 
 		getline(cin, description);
-		std::cout << "Введите описание дела:";
+		cout << "Введите описание дела:";
 		getline(cin, description);
 		file << description << endl;
 	}//note description
@@ -424,12 +462,12 @@ void add_note_for_redact() {
 		int mounth = -5;
 		int year = 0;
 
-		std::cout << "Введите дату(формат:\"dd mm yyyy\"):";
+		cout << "Введите дату(формат:\"dd mm yyyy\"):";
 		cin >> day >> mounth >> year;
 
 		file << day << "." << mounth << "." << year << endl;
 	}//date
 	file.close();
-	std::cout << endl << "Ваше дело успешно отредактированно!" << endl;
+	cout << endl << "Ваше дело успешно отредактированно!" << endl;
 	//добавление заметок
 }

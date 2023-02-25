@@ -8,11 +8,9 @@ using namespace std;
 
 
 enum CHOICE {
-    ADD_A_NOTE =1,
-    SHOW_ALL_NOTES,
-    FIND_A_NOTE,
-    DELETE_THE_NOTE,
-    DELETE_ALL_NOTES,
+    edit_personal_data =1,
+    add_products,
+    summary_for_the_day,
    EXIT
 };
 
@@ -22,31 +20,41 @@ int main()
     SetConsoleCP(1251);
     HANDLE hOUTPUT = GetStdHandle(STD_OUTPUT_HANDLE);
     int choice = 0;
-    cout << "Attention! Cases are stored in memory.\n\nAll cases have several criteria. Thanks for using it.";
-    Sleep(5000);
+    cout << "Attention! the program uses memory. Be careful";
+    Sleep(3000);
     bool x = 1;
     int z=1;
     system("cls");
     while (x != 0) {
         system("cls");
-        show_menu();
+        cout << "Do you have a profile?" << endl;
+        bool f1 = 0;
+        cin >> f1;
+        if (f1==false){
+            add_user();
+        }
+        else{
+            registration();
+        }
+        system("cls");
+        show_menu();// функция выводит на экран меню пользователя
         cout << endl << "Make a choice:";
         cin >> choice;
-        if (choice == ADD_A_NOTE) {
+        if (choice == edit_personal_data) {
             system("cls");
             add_note();
             cout << endl << endl;
             system("pause");
             system("cls");
         }
-        else if (choice == SHOW_ALL_NOTES) {
+        else if (choice == add_products) {
             system("cls");
             see_do();
             cout << endl << endl;
             system("pause");
             system("cls");
         }
-        else if (choice == FIND_A_NOTE) {
+        else if (choice == summary_for_the_day) {
             system("cls");
             string note_to_find;
             cout << "Attention! Enter only one word to search for!"<<endl;
@@ -68,31 +76,7 @@ int main()
 
             system("pause");
         }
-        else if (choice == DELETE_THE_NOTE) {
-            system("cls");
-            int count = 0;
-            string* all_notes_arr = all_notes(count);
-            cout << "Attention! CHOOSE YOUR CASE BY NAME AND ENTER THE NAME NUMBER!!!" << endl;
-            Sleep(3000);
-            cout << "Select the note to delete:" << endl;
-            for (int i = 0; i < count; i ++) {
-                cout << "["<<i+1<<"]" << all_notes_arr[i] << endl;
-            }
-            cout << "Input:";
-            int choice = 0;
-            cin >> choice;
-            choice -= 1;
-            remove_one_note(all_notes_arr, count, choice);
-            delete[] all_notes_arr;
-            system("pause");
-        }
-        else if (choice == DELETE_ALL_NOTES) {
-            system("cls");
-            remove_all_notes();
-            cout << "All notes deleted." << endl;
-            system("pause");
-            system("cls");
-        }
+       
         else if (choice == EXIT) {
             cout << "Are you shure? All affairs SAVE!\nif you are sure, then enter 1. Or enter 0\n\nInput:";
             bool f = 0;

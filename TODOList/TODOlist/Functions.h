@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+void registration();//проверка пользователя и его вход в систему
+void add_user();//добавление нового пользователя
+
 void show_menu();//Вывод меню
 
 void add_note();//добавление дела
