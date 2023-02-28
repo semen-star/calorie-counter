@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-
+void Edit_personal_data();
 void registration();//проверка пользователя и его вход в систему
 void add_user();//добавление нового пользователя
 

@@ -2,21 +2,110 @@
 #include <fstream>
 #include <string>
 #include <windows.h>
+#include <vector>
 #include "Functions.h"
 using namespace std;
 
+void Edit_personal_data(){
+
+	vector<string> vec{};
+	ifstream input{"users_reg.txt"};
+
+	while (!input.eof()) {
+		string str;
+		input >> str;
+		if (str != "TEXT") {
+			vec.push_back(str);
+		}
+		else {
+			input >> str;
+		}
+
+	}
+
+	input.close();
+	ofstream output{ "users_reg.txt" };
+	for (int i = 0; i < vec.size(); i++)
+	{
+		output << vec[i];
+	}
+
+
+	//TODO удалить текущий аккаунт. ЗАПРОСТИТЬ ПАРОЛЬ!
+	//TODO создать новый аккаунт
+
+}//TODO сделать редактирование данных пользователя
+
 void registration() {
-	ofstream file("users.txt", ios::app);
+	ifstream file("users_reg.txt");
 	if (!file.is_open()) {
 		cout << "Error in working with the file system!";
-		exit(EXIT_FAILURE);
+		return;
 	}
-	
+	string name_file, pass_file, name_user, pass_user;
+
+	cout << "Введите ник:";
+	cin >> name_user;
+	system("cls");
+	cout << "Введите пароль:";
+	cin >> pass_user;
+	system("cls");
+
+	for (int i = 1; !file.eof(); i++){
+		file >> name_file >> pass_file;
+		if ((name_user == name_file) and (pass_user == pass_file)) {
+			break;
+		}
+		
+	}
+
+
 
 	file.close();
 }//TODO сделать вход пользователей
 void add_user() {
+	system("cls");
+	ofstream file1("users_reg.txt");
+	if (!file1.is_open()) {
+		cout << "Error in working with the file system!";
+		return;
+	}
+	string name, pass;
+	cout << "Введите имя пользователя:";
+	cin >> name;
+	system("cls");
+	cout << "Придумайте пароль для этого пользователя:";
+	cin >> pass;
+	system("cls");
+	file1 <<endl<< name<<endl << pass;
+	file1.close();
 
+
+
+	ofstream file2("users.txt");
+	if (!file2.is_open()) {
+		cout << "Error in working with the file system!";
+		return;
+	}
+	int sex;
+	float height, weight;
+	{
+		cout << "Введите ваш рост (см):";
+		cin >> height;
+		system("cls");
+		cout << "Введите ваш вес (кг):";
+		cin >> weight;
+		system("cls");
+		cout << "Выбирете вашь пол:\n\t[1]male\n\t[2]female\n\t[other]Я идиот\n\nInput:";
+		cin >> sex; 
+	}//запись данных о пользователе в файл
+	if(sex==1)
+		file2 <<endl<< name <<endl<< height<<endl << weight<<endl << "male";
+	else if(sex==2)
+		file2 << endl << name << endl << height << endl << weight << endl << "female";
+	else
+		file2 <<endl<< name <<endl<< height<<endl << weight<<endl << "Вы идиот";
+	file2.close();
 
 }//TODO сделать добавление пользователя
 
@@ -28,14 +117,11 @@ void show_menu() {
 	}
 	string name, sex;
 	float height, weight;
-	cout << "\t\tAll cases:" << endl;
+	cout << "\t\tMain menu:" << endl;
 	height = 0;
 	for (int i = 1; !file.eof(); i++)
 	{
-		getline(file, name);
-		getline(file, height);
-		getline(file, weight);
-		getline(file, sex);
+		file >> name >> height >> weight >> sex;		
 		if (name.empty())
 			continue;
 		cout << '[' << i << ']' << endl << "\tНик: " << name << endl << "\tРост: " << height << endl << "\tВес: " << weight << endl << "\tПол: " << sex << endl << "\tИМТ: " << weight/(pow((height/100),2)) << endl;

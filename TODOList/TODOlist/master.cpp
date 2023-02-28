@@ -20,14 +20,14 @@ int main()
     SetConsoleCP(1251);
     HANDLE hOUTPUT = GetStdHandle(STD_OUTPUT_HANDLE);
     int choice = 0;
-    cout << "Attention! the program uses memory. Be careful";
+    cout << "Attention! the program uses memory. Be careful\a";
     Sleep(3000);
     bool x = 1;
     int z=1;
     system("cls");
     while (x != 0) {
         system("cls");
-        cout << "Do you have a profile?" << endl;
+        cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
         bool f1 = 0;
         cin >> f1;
         if (f1==false){
@@ -42,7 +42,7 @@ int main()
         cin >> choice;
         if (choice == edit_personal_data) {
             system("cls");
-            add_note();
+            Edit_personal_data();
             cout << endl << endl;
             system("pause");
             system("cls");
