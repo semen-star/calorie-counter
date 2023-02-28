@@ -1,10 +1,12 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (TODOlist.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+﻿F:\vs\visual studio\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (TODOlist.vcxproj).  Это может привести к ошибкам очистки и перестроения.
   Functions.cpp
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(116,10): warning C4129: i: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(175,39): warning C4129: w: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(175,125): warning C4129: j: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(195,39): warning C4129: w: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(195,125): warning C4129: j: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(215,39): warning C4129: w: неизвестная escape-последовательность
-C:\Users\itstep\Documents\command work\calorie-counter\TODOList\TODOlist\Functions.cpp(215,125): warning C4129: j: неизвестная escape-последовательность
-  TODOlist.vcxproj -> C:\Users\itstep\Documents\command work\calorie-counter\TODOList\x64\Debug\calorie-counter.exe
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(170,10): warning C4129: i: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(231,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(231,125): warning C4129: j: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(252,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(252,125): warning C4129: j: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(273,39): warning C4129: w: неизвестная escape-последовательность
+C:\Users\semas\Documents\calorie-counter\TODOList\TODOlist\Functions.cpp(273,125): warning C4129: j: неизвестная escape-последовательность
+  master.cpp
+  Создание кода...
+  TODOlist.vcxproj -> C:\Users\semas\Documents\calorie-counter\TODOList\x64\Debug\calorie-counter.exe

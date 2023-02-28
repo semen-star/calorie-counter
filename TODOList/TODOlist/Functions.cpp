@@ -6,8 +6,27 @@
 #include "Functions.h"
 using namespace std;
 
-void Edit_personal_data(){
 
+void settings_account(string name_user) {
+	int choise;
+	cout << "Choose what you need to do:\n\t[1]Edit user data\n\t[2]Create a new account\n\t[3]Log out of your account(does not work)\n\tChoice:";
+	cin >> choise;
+	if (choise == 1)
+		Edit_personal_data(name_user);
+	else if (choise == 2)
+		add_user();
+	else if (choise == 3)
+		cout << "The function is not working at this stage" << endl;
+	else {
+		cout << "Incorrect input. Try again" << endl;
+		system("pause");
+		settings_account();
+	}
+}
+
+/*
+void Edit_personal_data(){
+	
 	vector<string> vec{};
 	ifstream input{"users_reg.txt"};
 
@@ -22,8 +41,8 @@ void Edit_personal_data(){
 		}
 
 	}
-
 	input.close();
+
 	ofstream output{ "users_reg.txt" };
 	for (int i = 0; i < vec.size(); i++)
 	{
@@ -35,15 +54,29 @@ void Edit_personal_data(){
 	//TODO создать новый аккаунт
 
 }//TODO сделать редактирование данных пользователя
+*/
+void Edit_personal_data(string name_user) {
+	bool choise = false;
+	cout << "You really want to overwrite the user's data. All previous data will be deleted!\n\t[0]Do not delete\n\t[1]Delete";
+	cin >> choise;
+	if (choise == false){}
+	else {
+		
 
-void registration() {
+	}
+	//TODO удалить текущий аккаунт. ЗАПРОСТИТЬ ПАРОЛЬ!
+	//TODO создать новый аккаунт
+
+}//TODO сделать редактирование данных пользователя
+
+void registration(string& name, string& pass) {
 	ifstream file("users_reg.txt");
 	if (!file.is_open()) {
 		cout << "Error in working with the file system!";
 		return;
 	}
 	string name_file, pass_file, name_user, pass_user;
-
+	system("cls");
 	cout << "Введите ник:";
 	cin >> name_user;
 	system("cls");
@@ -58,11 +91,11 @@ void registration() {
 		}
 		
 	}
-
-
-
 	file.close();
-}//TODO сделать вход пользователей
+	name = name_user;
+	pass = pass_user;
+}//вход пользователей
+
 void add_user() {
 	system("cls");
 	ofstream file1("users_reg.txt");
@@ -124,19 +157,20 @@ void show_menu() {
 		file >> name >> height >> weight >> sex;		
 		if (name.empty())
 			continue;
-		cout << '[' << i << ']' << endl << "\tНик: " << name << endl << "\tРост: " << height << endl << "\tВес: " << weight << endl << "\tПол: " << sex << endl << "\tИМТ: " << weight/(pow((height/100),2)) << endl;
+		cout<< "\tName: " << name << endl << "\tHeight: " << height << endl << "\tWeight: " << weight << endl << "\tSex: " << sex << endl << "\tBMI: " << weight/(pow((height/100),2)) << endl;
 	}
 
 	
 	cout << endl << endl;
 	
 	
-	cout << "[1] edit personal data" << endl;
+	cout << "[1] account settings" << endl;
 	cout << "[2] add products" << endl;
 	cout << "[3] summary for the day" << endl;
 	cout << "[4] Exit" << endl;
 	file.close();
 }//вывод меню
+
 void see_do() {
 	ifstream file_date("date.txt");
 	cout << "How to display cases?:\n\n\t1.By Time[No Work!!]\n\t2.By priority \n\t3.All cases\input:" << endl;
@@ -175,6 +209,7 @@ void see_do() {
 		}
 	}
 }
+
 void see_priority_notes() {
 	system("cls");
 	cout << "\t\tAll matters of importance:" << endl;
@@ -182,6 +217,7 @@ void see_priority_notes() {
 	important();
 	the_usual();
 }
+
 void really_important() {
 	ifstream file("calories.txt");
 	if (!file.is_open()) {
@@ -202,6 +238,7 @@ void really_important() {
 	}
 	file.close();
 }
+
 void important() {
 	ifstream file("calories.txt");
 	if (!file.is_open()) {
@@ -222,6 +259,7 @@ void important() {
 	}
 	file.close();
 }
+
 void the_usual() {
 	ifstream file("calories.txt");
 	if (!file.is_open()) {
@@ -242,6 +280,7 @@ void the_usual() {
 	}
 	file.close();
 }
+
 void see_to_day(int day, int mounth, int year) {
 	ifstream file("calories.txt");
 	if (!file.is_open()) {
@@ -272,6 +311,7 @@ void see_to_day(int day, int mounth, int year) {
 	cout << endl << endl << "This is what the error looks like in reading the date from the file";
 	file.close();
 }
+
 void see_all_notes() {
 	ifstream file("calories.txt");
 	if (!file.is_open()) {
@@ -297,7 +337,7 @@ void see_all_notes() {
 void importance() {
 	cout << "Choose how important this case is:\n\t1.Очень важно(Very important)\n\t2.Важно(important)\n\t3.Usually\n\nA choice is expected:";
 }
-	
+
 void add_note() {
 	ofstream file("calories.txt", ios::app);
 	if (!file.is_open()) {

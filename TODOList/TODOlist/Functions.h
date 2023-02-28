@@ -2,20 +2,34 @@
 #include <string>
 #include <iostream>
 using namespace std;
+
+
+void settings_account();
+
 void Edit_personal_data();
-void registration();//проверка пользовател€ и его вход в систему
+
+void registration(string& name, string& pass);//проверка пользовател€ и его вход в систему
+
 void add_user();//добавление нового пользовател€
 
 void show_menu();//¬ывод меню
 
 void add_note();//добавление дела
+
 void see_to_day(int day_to_see, int mounth, int year);
+
 void see_to_mounth(int day, int mounth_to_see, int year);
+
 void see_all_notes();
+
 void see_priority_notes();
+
 void really_important();
+
 void important();
+
 void the_usual();
+
 void see_do();//ѕоказать все дела
 
 string* find_one_note(string&note_to_find, int &n_count);//найти дело

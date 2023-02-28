@@ -8,7 +8,7 @@ using namespace std;
 
 
 enum CHOICE {
-    edit_personal_data =1,
+    Settings_account =1,
     add_products,
     summary_for_the_day,
    EXIT
@@ -16,6 +16,7 @@ enum CHOICE {
 
 int main()
 {
+    string name,pass;//в переменную помещаем имя и пароль зарегестрированного ныне пользователя
     setlocale(LC_ALL, ""); 
     SetConsoleCP(1251);
     HANDLE hOUTPUT = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -27,22 +28,24 @@ int main()
     system("cls");
     while (x != 0) {
         system("cls");
-        cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
-        bool f1 = 0;
-        cin >> f1;
-        if (f1==false){
-            add_user();
-        }
-        else{
-            registration();
-        }
-        system("cls");
+        {
+            cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
+            bool f1 = 0;
+            cin >> f1;
+            if (f1 == false) {
+                add_user();
+            }
+            else {
+                registration(name,pass);
+            }
+            system("cls");
+        }//регистрация пользователя в системе
         show_menu();// функция выводит на экран меню пользователя
         cout << endl << "Make a choice:";
         cin >> choice;
-        if (choice == edit_personal_data) {
+        if (choice == Settings_account) {
             system("cls");
-            Edit_personal_data();
+            settings_account(name,pass);
             cout << endl << endl;
             system("pause");
             system("cls");
@@ -57,22 +60,22 @@ int main()
         else if (choice == summary_for_the_day) {
             system("cls");
             string note_to_find;
-            cout << "Attention! Enter only one word to search for!"<<endl;
+            cout << "Внимание! Введите только одно слово для поиска!"<<endl;
             getline(cin, note_to_find);
-            cout << "Search word:";
+            cout << "Поисковое слово:";
             getline(cin, note_to_find);
             int n_found = 0;
             string* found_notes = find_one_note(note_to_find, n_found);
             if (found_notes)
             {
-                cout << "Found notes:"<<endl;
+                cout << "Найденные заметки:"<<endl;
                 for (int i = 0; i < n_found; i++) 
                     cout << found_notes[i] << endl;   
                 delete[] found_notes;
                 cout << endl;
             }
             else
-                cout << "Sorry, I didn't find the necessary notes." << endl;
+                cout << "Извините, я не нашел необходимых заметок." << endl;
 
             system("pause");
         }
