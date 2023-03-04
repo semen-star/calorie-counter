@@ -28,17 +28,20 @@ int main()
     system("cls");
     while (x != 0) {
         system("cls");
+        bool autorisation = false;
+        while (autorisation==false)
         {
-            cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
-            bool f1 = 0;
-            cin >> f1;
-            if (f1 == false) {
-                add_user();
-            }
-            else {
-                registration(name,pass);
-            }
-            system("cls");
+            {
+                cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
+                bool f1 = 0;
+                cin >> f1;
+                if (f1 == false) {
+                    add_user();
+                }
+                else {
+                    registration(name, pass,autorisation);
+                }
+                system("cls"); }
         }//регистрация пользователя в системе
         show_menu();// функция выводит на экран меню пользователя
         cout << endl << "Make a choice:";

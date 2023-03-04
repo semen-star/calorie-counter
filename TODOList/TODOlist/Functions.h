@@ -4,11 +4,11 @@
 using namespace std;
 
 
-void settings_account();
+void settings_account(string name_user, string pass_user);
 
-void Edit_personal_data();
+void Edit_personal_data(string name_user, string pass_user);//No use in master
 
-void registration(string& name, string& pass);//проверка пользователя и его вход в систему
+void registration(string& name, string& pass, bool& autoris);//проверка пользователя и его вход в систему
 
 void add_user();//добавление нового пользователя
 

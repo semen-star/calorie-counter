@@ -6,23 +6,28 @@
 #include "Functions.h"
 using namespace std;
 
+void remove_account(string& name_user,string& pass_user) {
 
-void settings_account(string name_user) {
+
+}
+
+void settings_account(string& name_user,string& pass_user) {
 	int choise;
-	cout << "Choose what you need to do:\n\t[1]Edit user data\n\t[2]Create a new account\n\t[3]Log out of your account(does not work)\n\tChoice:";
+	cout << "Choose what you need to do:\n\t[1]Edit user data\n\t[2]Create a new account\n\t[3]Log out of your account(does not work)\nChoice:";
 	cin >> choise;
 	if (choise == 1)
-		Edit_personal_data(name_user);
+		Edit_personal_data(name_user,pass_user);
 	else if (choise == 2)
 		add_user();
 	else if (choise == 3)
 		cout << "The function is not working at this stage" << endl;
 	else {
+		system("cls");
 		cout << "Incorrect input. Try again" << endl;
 		system("pause");
-		settings_account();
+		settings_account(name_user, pass_user);
 	}
-}
+}//TODO сделать выход из аккаунта
 
 /*
 void Edit_personal_data(){
@@ -55,21 +60,33 @@ void Edit_personal_data(){
 
 }//TODO сделать редактирование данных пользовател€
 */
-void Edit_personal_data(string name_user) {
+void Edit_personal_data(string& name_user,string& pass_user) {
+	system("cls");
 	bool choise = false;
-	cout << "You really want to overwrite the user's data. All previous data will be deleted!\n\t[0]Do not delete\n\t[1]Delete";
+	cout << "You really want to overwrite the user's data. All previous data will be deleted!\n\t[0]Do not delete\n\t[1]Delete\nChoise:";
 	cin >> choise;
 	if (choise == false){}
 	else {
-		
-
+		string pass="None";
+		bool again = false;
+		while (pass != pass_user) {
+			system("cls");
+			if (again != false)
+				cout << "Incorrect password! Try again" << endl;
+			cout << "¬ведите пароль:";
+			cin >> pass;
+			again = true;
+		}
+		cout << "password correct!" << endl;
+		remove_account(name_user,pass_user);
+		add_user_for_edit();
 	}
 	//TODO удалить текущий аккаунт. «јѕ–ќ—“»“№ ѕј–ќЋ№!
 	//TODO создать новый аккаунт
 
 }//TODO сделать редактирование данных пользовател€
 
-void registration(string& name, string& pass) {
+void registration(string& name, string& pass, bool& autoris) {
 	ifstream file("users_reg.txt");
 	if (!file.is_open()) {
 		cout << "Error in working with the file system!";
@@ -94,6 +111,7 @@ void registration(string& name, string& pass) {
 	file.close();
 	name = name_user;
 	pass = pass_user;
+	autoris = true;
 }//вход пользователей
 
 void add_user() {
@@ -141,6 +159,10 @@ void add_user() {
 	file2.close();
 
 }//TODO сделать добавление пользовател€
+
+void add_user_for_edit(string name,string pass) {
+
+}
 
 void show_menu() {
 	ifstream file("users.txt");
