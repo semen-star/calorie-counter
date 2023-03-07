@@ -6,60 +6,12 @@
 #include "Functions.h"
 using namespace std;
 
-void remove_account(string& name_user,string& pass_user) {
+void remove_account(string& name_user, string& pass_user) {
+
 
 
 }
 
-void settings_account(string& name_user,string& pass_user) {
-	int choise;
-	cout << "Choose what you need to do:\n\t[1]Edit user data\n\t[2]Create a new account\n\t[3]Log out of your account(does not work)\nChoice:";
-	cin >> choise;
-	if (choise == 1)
-		Edit_personal_data(name_user,pass_user);
-	else if (choise == 2)
-		add_user();
-	else if (choise == 3)
-		cout << "The function is not working at this stage" << endl;
-	else {
-		system("cls");
-		cout << "Incorrect input. Try again" << endl;
-		system("pause");
-		settings_account(name_user, pass_user);
-	}
-}//TODO сделать выход из аккаунта
-
-/*
-void Edit_personal_data(){
-	
-	vector<string> vec{};
-	ifstream input{"users_reg.txt"};
-
-	while (!input.eof()) {
-		string str;
-		input >> str;
-		if (str != "TEXT") {
-			vec.push_back(str);
-		}
-		else {
-			input >> str;
-		}
-
-	}
-	input.close();
-
-	ofstream output{ "users_reg.txt" };
-	for (int i = 0; i < vec.size(); i++)
-	{
-		output << vec[i];
-	}
-
-
-	//TODO удалить текущий аккаунт. ЗАПРОСТИТЬ ПАРОЛЬ!
-	//TODO создать новый аккаунт
-
-}//TODO сделать редактирование данных пользователя
-*/
 void Edit_personal_data(string& name_user,string& pass_user) {
 	system("cls");
 	bool choise = false;
@@ -73,18 +25,40 @@ void Edit_personal_data(string& name_user,string& pass_user) {
 			system("cls");
 			if (again != false)
 				cout << "Incorrect password! Try again" << endl;
-			cout << "Введите пароль:";
+			cout << "Enter the password:";
 			cin >> pass;
 			again = true;
 		}
 		cout << "password correct!" << endl;
 		remove_account(name_user,pass_user);
-		add_user_for_edit();
+		cout << "Profile deleted" << endl;
+		system("pause");
+		add_user();
+		system("cls");
 	}
 	//TODO удалить текущий аккаунт. ЗАПРОСТИТЬ ПАРОЛЬ!
 	//TODO создать новый аккаунт
 
 }//TODO сделать редактирование данных пользователя
+
+void settings_account(string& name_user,string& pass_user) {
+	int choise;
+	cout << "Choose what you need to do:\n\t[1]Edit user data\n\t[2]Create a new account\n\t[3]Log out of your account(does not work)\nChoice:";
+	cin >> choise;
+	if (choise == 1) {
+		Edit_personal_data(name_user,pass_user);
+	} 
+	else if (choise == 2)
+		add_user();
+	else if (choise == 3)
+		cout << "The function is not working at this stage" << endl;
+	else {
+		system("cls");
+		cout << "Incorrect input. Try again" << endl;
+		system("pause");
+		settings_account(name_user, pass_user);
+	}
+}//TODO сделать выход из аккаунта
 
 void registration(string& name, string& pass, bool& autoris) {
 	ifstream file("users_reg.txt");
@@ -122,10 +96,10 @@ void add_user() {
 		return;
 	}
 	string name, pass;
-	cout << "Введите имя пользователя:";
+	cout << "Enter the user name:";
 	cin >> name;
 	system("cls");
-	cout << "Придумайте пароль для этого пользователя:";
+	cout << "Come up with a password for this user:";
 	cin >> pass;
 	system("cls");
 	file1 <<endl<< name<<endl << pass;
@@ -141,13 +115,13 @@ void add_user() {
 	int sex;
 	float height, weight;
 	{
-		cout << "Введите ваш рост (см):";
+		cout << "Enter your height (cm):";
 		cin >> height;
 		system("cls");
-		cout << "Введите ваш вес (кг):";
+		cout << "Enter your weight (kg):";
 		cin >> weight;
 		system("cls");
-		cout << "Выбирете вашь пол:\n\t[1]male\n\t[2]female\n\t[other]Я идиот\n\nInput:";
+		cout << "Choose your gender:\n\t[1]male\n\t[2]female\n\t[other]I'm an idiot\n\nInput:";
 		cin >> sex; 
 	}//запись данных о пользователе в файл
 	if(sex==1)
@@ -155,13 +129,49 @@ void add_user() {
 	else if(sex==2)
 		file2 << endl << name << endl << height << endl << weight << endl << "female";
 	else
-		file2 <<endl<< name <<endl<< height<<endl << weight<<endl << "Вы идиот";
+		file2 <<endl<< name <<endl<< height<<endl << weight<<endl << "You're an idiot";
 	file2.close();
 
-}//TODO сделать добавление пользователя
+}
 
-void add_user_for_edit(string name,string pass) {
+void add_product(string name_user) {
 
+	system("cls");
+	cout << "Продолжить отсчёт каллорий со старого дня или делать запись о новом дне?\n\t[0]Старый день\n\t[1]Новый день(Не работает!)\nChoise:";
+	bool old_or_new = false;
+	cin >> old_or_new;
+	if (old_or_new == false) {//Продолжаем записывать в старый день
+		float calories_day;
+
+		ifstream calories_old("calories.txt");
+		if (!calories_old.is_open()) {
+			cout << "Error in working with the file system!";
+			return;
+		}
+
+		int par;
+		while (!calories_old.eof()) {
+			calories_old >> par;
+			if (par-1 == name_user) {
+				calories_old >> calories_day;
+			}
+		}
+
+		calories_old.close();
+		ofstream calories("calories.txt");
+		if (!calories.is_open()) {
+			cout << "Error in working with the file system!";
+			return;
+		}
+		cout << "Введите калорийность продукта:";
+		float calories_product_new;
+		cin >> calories_product_new;
+		system("cls");
+		calories.close();
+	}
+	else {//Создаём запись о калориях как на новый день(С этого момента калории равны 0)
+
+	}
 }
 
 void show_menu() {

@@ -21,28 +21,26 @@ int main()
     SetConsoleCP(1251);
     HANDLE hOUTPUT = GetStdHandle(STD_OUTPUT_HANDLE);
     int choice = 0;
-    cout << "Attention! the program uses memory. Be careful\a";
-    Sleep(3000);
     bool x = 1;
     int z=1;
     system("cls");
+    {
+        bool autorisation = false;
+        while (autorisation == false) {
+            cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
+            bool f1 = 0;
+            cin >> f1;
+            if (f1 == false) {
+                add_user();
+            }
+            else {
+                registration(name, pass, autorisation);
+            }
+            system("cls");
+        }//регистрация пользователя в системе
+    }//Весь процесс авторизации
     while (x != 0) {
         system("cls");
-        bool autorisation = false;
-        while (autorisation==false)
-        {
-            {
-                cout << "Do you have a profile?\n\t[0]No\n\t[1]Yes\nInput:";
-                bool f1 = 0;
-                cin >> f1;
-                if (f1 == false) {
-                    add_user();
-                }
-                else {
-                    registration(name, pass,autorisation);
-                }
-                system("cls"); }
-        }//регистрация пользователя в системе
         show_menu();// функция выводит на экран меню пользователя
         cout << endl << "Make a choice:";
         cin >> choice;
@@ -55,7 +53,7 @@ int main()
         }
         else if (choice == add_products) {
             system("cls");
-            see_do();
+            add_product(name);
             cout << endl << endl;
             system("pause");
             system("cls");
